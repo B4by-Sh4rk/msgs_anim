@@ -15,7 +15,7 @@ msgsWrapper.addEventListener('wheel', preventScroll);
 
 function createMessage(who, what) {
     const message = document.createElement('div');
-    message.classList.add('msg', 'msg_send'); // Добавляем класс msg_send
+    message.classList.add('msg', 'msg_send');
     let randomClass;
     if(!who){
         randomClass = Math.random() < 0.5 ? 'msg_to' : 'msg_from';
@@ -37,7 +37,6 @@ function createMessage(who, what) {
     }
 
     setTimeout(function() {
-        // Удаление класса msg_send через 0.5 секунды
         setTimeout(function() {
             message.classList.remove('msg_send');
         }, 500);
