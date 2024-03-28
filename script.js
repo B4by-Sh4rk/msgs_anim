@@ -30,11 +30,6 @@ function createMessage(who, what) {
     const msgsWrapper = document.querySelector('.msgs_wrapper');
     msgsWrapper.appendChild(message);
 
-    if (randomClass === 'msg_to') {
-        message.style.animation = 'slideInFromLeft 0.5s ease forwards';
-    } else if (randomClass === 'msg_from') {
-        message.style.animation = 'slideInFromRight 0.5s ease forwards';
-    }
 
     setTimeout(function() {
         setTimeout(function() {
@@ -49,10 +44,27 @@ function createMessage(who, what) {
             <div class="circle"></div>
         `;
         setTimeout(function() {
-            document.querySelector('.circle:nth-child(1)').style.animationDelay = '0s';
-            document.querySelector('.circle:nth-child(2)').style.animationDelay = '0.5s';
-            document.querySelector('.circle:nth-child(3)').style.animationDelay = '1s';
-        }, 500);
+            msgType.removeChild(loader);
+            let textNode;
+            if (!what) {
+                textNode = document.createTextNode('Новое сообщение');
+            } else {
+                textNode = document.createTextNode(what);
+            }
+            msgType.appendChild(textNode);
+        
+            // Убрали классы, связанные с анимацией пузырька
+            if (randomClass === 'msg_to') {
+                message.classList.add('msg_to_sended');
+                message.style.animation = 'bubbleRightToLeft 1s ease forwards';
+            } else if (randomClass === 'msg_from') {
+                message.classList.add('msg_from_sended');
+                message.style.animation = 'bubbleLeftToRight 1s ease forwards';
+            }
+        
+        }, 3000); // Ждем 3000мс после удаления loader'а
+        
+        
         
         msgType.appendChild(loader);
         scrollToBottom();
@@ -100,14 +112,6 @@ var messages = [
 ];
 
 sendMessage(messages, 0);
-
-
-
-setTimeout(function() {
-    var img = document.createElement('img');
-    img.src = './1.png';
-    document.body.appendChild(img);
-}, 36000);
 
 
 
