@@ -67,26 +67,30 @@ function createMessage(who, what) {
         
         msgType.appendChild(loader);
         scrollToBottom();
+        let textNode;
         setTimeout(function() {
-            msgType.removeChild(loader);
-            let textNode;
+            if (loader && loader.parentNode === msgType) {
+                msgType.removeChild(loader);
+            }
             if(!what){
                 textNode = document.createTextNode('Новое сообщение');
             }else{
                 textNode = document.createTextNode(what);
             }
-            msgType.appendChild(textNode);
-            if (randomClass === 'msg_to') {
-                message.classList.add('msg_to_sended');
-            } else if (randomClass === 'msg_from') {
-                message.classList.add('msg_from_sended');
-            }
-            scrollToBottom();
+
         }, 3000);
+        if(textNode){
+            msgType.appendChild(textNode);
+        }
+        if (randomClass === 'msg_to') {
+            message.classList.add('msg_to_sended');
+        } else if (randomClass === 'msg_from') {
+            message.classList.add('msg_from_sended');
+        }
+        scrollToBottom();
     }, 0);
 
     message.appendChild(msgType);
-    scrollToBottom();
 }
 
 
@@ -99,7 +103,7 @@ function sendMessage(messages, index) {
     }
 }
 
-var messages = [
+let messages = [
     ["msg_to", 'Привет!'],
     ["msg_from", 'Привет.'],
     ["msg_to", 'Ывыбвщ ыфзвб ы фзвыв юзащвлаы?'],
