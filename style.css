@@ -6,38 +6,51 @@
     height: 100vh;
     margin: 0 auto;
     max-width: 100%;
-    background-color: #ffd4af;
+    background-color: #EFBBAA;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .phone {
-    height: 54em;
+    height: 56em;
     width: 30em;
-    background-color: #8f4444;
+    background-color: #F3F3F3;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 1.5em;
+    border-radius: 3.5em;
+    box-shadow: 0 1em 0.2em rgb(63 14 39 / 33%);
 }
 
 .phone_screen {
-    height: 49em;
+    height: 52em;
     width: 28em;
-    background-color: #ffffff;
-    border-radius: 1.5em;
+    background-color: #8BD6F1;
+    border-radius: 2.5em;
     margin-bottom: 2em;
 }
-
+.phone_screen::after{
+    content: '';
+    width: 10em;
+    height: 2em;
+    background-color: #F3F3F3;
+    position: absolute;
+    top: 5.5em;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2em;
+}
 .msgs_wrapper {
     padding: 1em;
-    height: 97.6%;
+    height: 96.1%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     overflow: hidden;
-    border-radius: 1.5em;
+    border-radius: 2.5em;
     transition: max-height 0.5s ease-out;
     overflow-y: scroll;
     scroll-behavior: smooth;
@@ -53,7 +66,7 @@
 }
 
 .msg.msg_to {
-    background-color: cadetblue;
+    background-color: #E9E6EC;
     border-radius: 1em;
     padding: 0.4em;
 }
@@ -65,7 +78,7 @@
 }
 
 .msg>.msg_to {
-    background-color: cadetblue;
+    background-color: #E9E6EC;
     border-radius: 1em;
     padding: 0.4em 0.6em;
     font-family: monospace;
@@ -76,55 +89,46 @@
     justify-content: flex-end;
 }
 .msg>.msg_from {
-    background-color: #dddddd;
+    background-color: #27AEEE;
     border-radius: 1em;
     padding: 0.4em 0.6em;
     font-family: monospace;
 }
-
-.msg_from_sended::after{
-    content: '';
-    position: absolute;
-    right: -0.55em;
-    top: 0.4em;
-    border: 0.3em solid transparent;
-    border-left: 0.5em solid #dddddd;
-
+@keyframes bubbleRightToLeft {
+    0% {
+        opacity: 0;
+        transform: scale(0.1) translateX(-100vw);
+    }
+    50%{
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-.msg_to_sended::after{
-    content: '';
-    position: absolute;
-    left: -0.55em;
-    top: 0.4em;
-    border: 0.3em solid transparent;
-    transform: rotate(180deg);
-    border-left: 0.5em solid #5f9ea0;
+
+@keyframes bubbleLeftToRight {
+    0% {
+        opacity: 0;
+        transform: scale(0.1) translateX(100vw);
+    }
+    50%{
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-.loader{
+
+
+
+.loader {
     display: flex;
     gap: 0.4em;
 }
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
 
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
 
 
 .circle {
@@ -154,14 +158,6 @@
     }
   }
 
-
-
-  img {
-    position: absolute;
-    top: 52vh;
-    left: 26vw;
-    width: 42em;
-}
 
 
 body {
