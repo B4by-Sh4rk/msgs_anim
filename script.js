@@ -68,6 +68,7 @@ function createMessage(who, what) {
         msgType.appendChild(loader);
         scrollToBottom();
         setTimeout(function() {
+            msgType.removeChild(loader);
             let textNode;
             if(!what){
                 textNode = document.createTextNode('Новое сообщение');
