@@ -87,10 +87,10 @@ function createMessage(who, what) {
         } else if (randomClass === 'msg_from') {
             message.classList.add('msg_from_sended');
         }
-        scrollToBottom();
     }, 0);
-
+    
     message.appendChild(msgType);
+    scrollToBottom();
 }
 
 
