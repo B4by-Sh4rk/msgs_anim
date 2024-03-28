@@ -53,7 +53,6 @@ function createMessage(who, what) {
             }
             msgType.appendChild(textNode);
         
-            // Убрали классы, связанные с анимацией пузырька
             if (randomClass === 'msg_to') {
                 message.classList.add('msg_to_sended');
                 message.style.animation = 'bubbleRightToLeft 1s ease forwards';
@@ -62,7 +61,7 @@ function createMessage(who, what) {
                 message.style.animation = 'bubbleLeftToRight 1s ease forwards';
             }
         
-        }, 3000); // Ждем 3000мс после удаления loader'а
+        }, 3000); 
         
         
         
