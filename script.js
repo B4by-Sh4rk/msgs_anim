@@ -83,6 +83,7 @@ function createMessage(who, what) {
             }
             scrollToBottom();
         }, 3000);
+        scrollToBottom();
     }, 0);
 
     message.appendChild(msgType);
