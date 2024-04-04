@@ -93,15 +93,27 @@ function createMessage(who, what) {
     scrollToBottom();
 }
 
+function getTotalMessageLength(messages) {
+    return messages.reduce((total, message) => total + message[0].length + message[1].length, 0);
+}
 
 function sendMessage(messages, index) {
-    if (index < messages.length) {
+    const totalLength = getTotalMessageLength(messages);
+    const delay = totalLength * 8; 
+    if (index == 0) {
+
+        createMessage(messages[index][0], messages[index][1]);
+        sendMessage(messages, index + 1);
+        scrollToBottom();
+    }else if (index < messages.length) {
         setTimeout(function() {
             createMessage(messages[index][0], messages[index][1]);
             sendMessage(messages, index + 1);
-        }, 3000); 
+            scrollToBottom();
+        }, delay ); 
     }
 }
+
 
 let messages = [
     ["msg_to", 'Привет!'],
