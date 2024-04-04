@@ -10,7 +10,7 @@
     event.preventDefault(); 
     event.stopPropagation();
 }
-msgsWrapper.addEventListener('wheel', preventScroll);
+// msgsWrapper.addEventListener('wheel', preventScroll);
 
 
 function createMessage(who, what) {
@@ -30,11 +30,10 @@ function createMessage(who, what) {
     const msgsWrapper = document.querySelector('.msgs_wrapper');
     msgsWrapper.appendChild(message);
 
-
     setTimeout(function() {
         setTimeout(function() {
             message.classList.remove('msg_send');
-        }, 500);
+        }, 200);
         
         const loader = document.createElement('div');
         loader.classList.add('loader');
@@ -61,12 +60,11 @@ function createMessage(who, what) {
                 message.style.animation = 'bubbleLeftToRight 1s ease forwards';
             }
         
-        }, 3000); 
+        }, 1500); 
         
         
         
         msgType.appendChild(loader);
-        scrollToBottom();
         let textNode;
         setTimeout(function() {
             if (loader && loader.parentNode === msgType) {
@@ -76,9 +74,10 @@ function createMessage(who, what) {
                 textNode = document.createTextNode('Новое сообщение');
             }else{
                 textNode = document.createTextNode(what);
+                scrollToBottom();
             }
 
-        }, 3000);
+        }, 1500);
         if(textNode){
             msgType.appendChild(textNode);
         }
@@ -90,7 +89,6 @@ function createMessage(who, what) {
     }, 0);
     
     message.appendChild(msgType);
-    scrollToBottom();
 }
 
 function getTotalMessageLength(messages) {
@@ -99,19 +97,18 @@ function getTotalMessageLength(messages) {
 
 function sendMessage(messages, index) {
     const totalLength = getTotalMessageLength(messages);
-    const delay = totalLength * 8; 
+    const delay = totalLength * 4; 
     if (index == 0) {
 
         createMessage(messages[index][0], messages[index][1]);
         sendMessage(messages, index + 1);
-        scrollToBottom();
     }else if (index < messages.length) {
         setTimeout(function() {
             createMessage(messages[index][0], messages[index][1]);
             sendMessage(messages, index + 1);
-            scrollToBottom();
         }, delay ); 
     }
+    scrollToBottom();
 }
 
 
