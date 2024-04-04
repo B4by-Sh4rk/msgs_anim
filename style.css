@@ -137,27 +137,71 @@
     border-radius: 50%;
     background-color: rgb(44, 44, 44);
     opacity: 0.2;
-    animation: fade 1.5s infinite;
+    animation: fade1 1.5s infinite;
   }
   
-  @keyframes fade {
+  @keyframes fade1 {
     0% {
-      opacity: 0.2;
+        opacity: 0.5;
     }
     25% {
-      opacity: 0.5;
-    }
-    50% {
       opacity: 0.8;
     }
-    75% {
+    50% {
       opacity: 0.5;
+    }
+    75% {
+      opacity: 0.2;
     }
     100% {
       opacity: 0.2;
     }
   }
 
+  .circle:first-of-type {
+    animation: fade 1.5s infinite;
+  }
+  
+  @keyframes fade2 {
+    0% {
+        opacity: 0.2;
+      }
+      25% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      75% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 0.2;
+      }
+  }
+
+
+  .circle:last-of-type {
+    animation: fade2 1.5s infinite;
+  }
+  
+  @keyframes fade {
+    0% {
+        opacity: 0.8;
+    }
+    25% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.2;
+    }
+    75% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
 
 
 body {
